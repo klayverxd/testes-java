@@ -22,10 +22,10 @@ public class TransacaoTest {
 	public void valorLocacaoTotalTest() {
 		Locacao locacao = new Locacao();
 		Filme filme1 = new Filme("Java", Genero.ROMANCE);
-		filme1.valor = 100;
+		filme1.setValor(100);
 
 		Filme filme2 = new Filme("JavaScript", Genero.ROMANCE);
-		filme2.valor = 50;
+		filme2.setValor(50);
 
 		locacao.alugar(new Cliente("User1", 2, true), filme1);
 		locacao.alugar(new Cliente("User2", 2, true), filme2);
