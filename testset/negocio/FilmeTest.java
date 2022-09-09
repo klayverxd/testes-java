@@ -26,4 +26,11 @@ public class FilmeTest {
 		assertEquals("Java", filme.nome);
 	}
 
+	@Test
+	public void testSetValor() {
+		filme = new Filme("Java", Genero.ROMANCE);
+		filme.setValor(10.0);
+		assertEquals(filme.valor, 9.0, 0.01);
+	}
+
 }
