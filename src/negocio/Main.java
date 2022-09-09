@@ -7,10 +7,12 @@ public class Main {
 		Filme filme = new Filme("Java muito feliz, o ódio", Genero.ROMANCE);
 		Cliente cliente = new Cliente("Klayver", 13, true);
 
+		cliente.setFavoritos(filme);
+
 		Locacao locacao = new Locacao();
 
 		try {
-			locacao.alugar(cliente, filme);
+			locacao.alugar(cliente, cliente.getFavorito(0));
 			System.out.println("Filme alugado com sucesso!");
 		} catch (Exception e) {
 			System.err.println("Houve um erro ao alugar filme: " + e.getMessage());
