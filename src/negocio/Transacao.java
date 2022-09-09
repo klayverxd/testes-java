@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Transacao {
 
 	protected ArrayList<Locacao> alugueis;
-	protected ArrayList generosQtdAluguel;
 
 	public Transacao() {
 		alugueis = new ArrayList<Locacao>();
@@ -20,26 +19,24 @@ public class Transacao {
 	}
 
 	public Genero generoMaisAlugado() {
-		int qtdDrama = 0;
-		int qtdRomance = 0;
-		int qtdComedia = 0;
+		Genero generoMaisAlugado = Genero.values()[0];
+		int counter = 0;
 
-		for (Locacao locacao : alugueis) {
-			if (locacao.filme.genero == Genero.DRAMA) {
-				qtdDrama++;
-			} else if (locacao.filme.genero == Genero.ROMANCE) {
-				qtdRomance++;
-			} else if (locacao.filme.genero == Genero.COMEDIA) {
-				qtdComedia++;
+		for (Genero genero : Genero.values()) {
+			int counterGenero = 0;
+			for (Locacao locacao : alugueis) {
+				if (locacao.filme.genero == genero) {
+					counterGenero++;
+				}
+			}
+			if (counterGenero > counter) {
+				counter = counterGenero;
+				generoMaisAlugado = genero;
 			}
 		}
 
-		if (qtdDrama > qtdRomance && qtdDrama > qtdComedia) {
-			return Genero.DRAMA;
-		} else if (qtdRomance > qtdDrama && qtdRomance > qtdComedia) {
-			return Genero.ROMANCE;
-		} else {
-			return Genero.COMEDIA;
-		}
+		System.out.println("O gênero mais alugado é: " + generoMaisAlugado + " com " + counter + " aluguéis");
+
+		return generoMaisAlugado;
 	}
 }

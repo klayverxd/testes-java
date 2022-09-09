@@ -6,12 +6,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import negocio.Filme;
-import negocio.Genero;
-
 public class FilmeTest {
 
 	Filme filme;
+
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("Antes");
@@ -19,12 +17,12 @@ public class FilmeTest {
 
 	@After
 	public void tearDown() throws Exception {
-	
+
 	}
 
 	@Test
 	public void testFilme() {
-		filme= new Filme("Java", Genero.DRAMA);
+		filme = new Filme("Java", Genero.DRAMA);
 		assertEquals("Java", filme.nome);
 	}
 
