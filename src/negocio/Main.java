@@ -12,6 +12,9 @@ public class Main {
 		Cliente cliente2 = new Cliente("Klayver", 13, true);
 		Filme filme3 = new Filme("Java muito feliz, o ódio", Genero.COMEDIA);
 		Cliente cliente3 = new Cliente("Klayver", 13, true);
+		filme.setValor(10);
+		filme2.setValor(10);
+		filme3.setValor(10);
 
 		cliente.setFavoritos(filme);
 
@@ -27,6 +30,7 @@ public class Main {
 			locacao3.alugar(cliente3, filme3);
 			transacao.alugueis.add(locacao3);
 			transacao.generoMaisAlugado();
+			transacao.valorLocacaoTotal();
 			System.out.println("Filme alugado com sucesso!");
 		} catch (Exception e) {
 			System.err.println("Houve um erro ao alugar filme: " + e.getMessage());

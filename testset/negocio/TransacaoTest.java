@@ -19,19 +19,21 @@ public class TransacaoTest {
 	}
 
 	@Test
-	public void valorLocacaoTotalTest() {
-		Locacao locacao = new Locacao();
-		Filme filme1 = new Filme("Java", Genero.ROMANCE);
+	public void testValorLocacaoTotal() {
+		Locacao locacao1 = new Locacao();
+		Locacao locacao2 = new Locacao();
+		Filme filme1 = new Filme("Java", Genero.COMEDIA);
 		filme1.setValor(100);
 
-		Filme filme2 = new Filme("JavaScript", Genero.ROMANCE);
+		Filme filme2 = new Filme("JavaScript", Genero.COMEDIA);
 		filme2.setValor(50);
 
-		locacao.alugar(new Cliente("User1", 2, true), filme1);
-		locacao.alugar(new Cliente("User2", 2, true), filme2);
+		locacao1.alugar(new Cliente("User1", 2, true), filme1);
+		locacao2.alugar(new Cliente("User2", 2, true), filme2);
 
-		transacao.alugueis.add(locacao);
-		assertTrue(50 == transacao.valorLocacaoTotal());
+		transacao.alugueis.add(locacao1);
+		transacao.alugueis.add(locacao2);
+		assertTrue(150 == transacao.valorLocacaoTotal());
 	}
 
 	@Test
