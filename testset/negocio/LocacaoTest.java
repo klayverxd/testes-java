@@ -15,8 +15,8 @@ public class LocacaoTest {
 	@Before
 	public void setUp() throws Exception {
 		transacao = new Transacao();
+		locacao = new Locacao();
 		filme = new Filme("Java muito feliz, o ódio", Genero.ROMANCE);
-		cliente = new Cliente("Klayver", 13, false);
 	}
 
 	@After
@@ -25,7 +25,7 @@ public class LocacaoTest {
 
 	@Test
 	public void testClienteNaoAtivo() {
-		locacao = new Locacao();
+		cliente = new Cliente("Klayver", 13, false);
 
 		try {
 			locacao.alugar(cliente, filme);
@@ -33,6 +33,20 @@ public class LocacaoTest {
 			fail("Cliente inativo");
 		} catch (Exception e) {
 			assertEquals("Cliente deve estar ativo para alugar um filme", e.getMessage());
+		}
+	}
+
+	@Test
+	public void testDataHoraLocacao() {
+		cliente = new Cliente("Klayver", 13, true);
+
+		try {
+			locacao.alugar(cliente, filme);
+			transacao.alugueis.add(locacao);
+			assertNotNull(locacao.data);
+			assertNotNull(locacao.hora);
+		} catch (Exception e) {
+			fail("Cliente inativo");
 		}
 	}
 
