@@ -33,4 +33,23 @@ public class TransacaoTest {
 		transacao.alugueis.add(locacao);
 		assertTrue(50 == transacao.valorLocacaoTotal());
 	}
+
+	@Test
+	public void testGeneroMaisAlugado() {
+		Locacao locacao1 = new Locacao();
+		Locacao locacao2 = new Locacao();
+		Filme filme1 = new Filme("Java", Genero.ROMANCE);
+		filme1.setValor(100);
+
+		Filme filme2 = new Filme("JavaScript", Genero.ROMANCE);
+		filme2.setValor(50);
+
+		locacao1.alugar(new Cliente("User1", 2, true), filme1);
+		locacao2.alugar(new Cliente("User2", 2, true), filme2);
+
+		transacao.alugueis.add(locacao1);
+		transacao.alugueis.add(locacao2);
+
+		assertTrue(Genero.ROMANCE == transacao.generoMaisAlugado());
+	}
 }
