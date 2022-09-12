@@ -40,18 +40,30 @@ public class TransacaoTest {
 	public void testGeneroMaisAlugado() {
 		Locacao locacao1 = new Locacao();
 		Locacao locacao2 = new Locacao();
+		Locacao locacao3 = new Locacao();
+		Locacao locacao4 = new Locacao();
 		Filme filme1 = new Filme("Java", Genero.ROMANCE);
 		filme1.setValor(100);
 
-		Filme filme2 = new Filme("JavaScript", Genero.ROMANCE);
+		Filme filme2 = new Filme("JavaScript", Genero.DRAMA);
 		filme2.setValor(50);
+		
+		Filme filme3 = new Filme("JavaScript", Genero.DRAMA);
+		filme3.setValor(50);
+		
+		Filme filme4 = new Filme("JavaScript", Genero.DRAMA);
+		filme4.setValor(50);
 
 		locacao1.alugar(new Cliente("User1", 2, true), filme1);
 		locacao2.alugar(new Cliente("User2", 2, true), filme2);
+		locacao3.alugar(new Cliente("User3", 2, true), filme3);
+		locacao4.alugar(new Cliente("User4", 2, true), filme4);
 
 		transacao.alugueis.add(locacao1);
 		transacao.alugueis.add(locacao2);
+		transacao.alugueis.add(locacao3);
+		transacao.alugueis.add(locacao4);
 
-		assertTrue(Genero.ROMANCE == transacao.generoMaisAlugado());
+		assertTrue(Genero.DRAMA == transacao.generoMaisAlugado());
 	}
 }

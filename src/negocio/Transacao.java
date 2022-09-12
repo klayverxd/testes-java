@@ -35,8 +35,6 @@ public class Transacao {
 			}
 		}
 
-		System.out.println("O gênero mais alugado é: " + generoMaisAlugado + " com " + counter + " aluguéis");
-
 		return generoMaisAlugado;
 	}
 }
